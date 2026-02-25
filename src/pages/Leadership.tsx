@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Users, Linkedin, Mail } from "lucide-react";
 import Layout from "@/components/Layout";
+import { buildPageSeo } from "@/seo/pageSeo";
 import SectionHeading from "@/components/SectionHeading";
 
 const fadeUp = {
@@ -40,7 +41,7 @@ const directors = [
 ];
 
 const Leadership = () => (
-  <Layout>
+  <Layout seo={buildPageSeo("leadership", [{ name: "Home", path: "/" }, { name: "Leadership", path: "/leadership" }])}>
     <section className="relative pt-36 pb-24 bg-gradient-dark overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, hsl(0 0% 100% / 0.1) 1px, transparent 0)", backgroundSize: "40px 40px" }} />

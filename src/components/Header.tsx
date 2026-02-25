@@ -4,27 +4,9 @@ import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { navigationConfig } from "@config/navigation.config";
+import { contactConfig } from "@config/contact.config";
 
-const navItems = [
-  { label: "Home", path: "/" },
-  { label: "About", path: "/about" },
-  { label: "Leadership", path: "/leadership" },
-  { label: "Capabilities", path: "/capabilities" },
-  { label: "Infrastructure", path: "/infrastructure" },
-  { label: "Industries", path: "/industries" },
-  {
-    label: "Our Units", path: "/units",
-    children: [
-      { label: "All Units", path: "/units" },
-      { label: "Unit 1 — Bangalore", path: "/units/bangalore-1" },
-      { label: "Unit 2 — Bangalore", path: "/units/bangalore-2" },
-      { label: "Unit 3 — Bangalore", path: "/units/bangalore-3" },
-      { label: "Unit 4 — Tumakuru", path: "/units/tumakuru" },
-    ],
-  },
-  { label: "Gallery", path: "/gallery" },
-  { label: "Contact", path: "/contact" },
-];
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -59,8 +41,8 @@ const Header = () => {
       )}>
         <div className="container flex items-center justify-between text-xs text-primary-foreground">
           <span>AS9100D & ISO 9001:2015 Certified Precision Manufacturing</span>
-          <a href="tel:08041171792" className="flex items-center gap-1 hover:underline">
-            <Phone className="h-3 w-3" /> 080-41171792
+          <a href={`tel:${contactConfig.phones.landline.replace(/[^\d+]/g, "")}`} className="flex items-center gap-1 hover:underline">
+            <Phone className="h-3 w-3" /> {contactConfig.phones.landline}
           </a>
         </div>
       </div>
@@ -86,7 +68,7 @@ const Header = () => {
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-1">
-          {navItems.map((item) => (
+          {navigationConfig.map((item) => (
             <div
               key={item.label}
               className="relative group"
@@ -164,7 +146,7 @@ const Header = () => {
             className="lg:hidden bg-background/98 backdrop-blur-xl border-t border-border/50 overflow-hidden"
           >
             <nav className="container py-4 flex flex-col gap-1">
-              {navItems.map((item, i) => (
+              {navigationConfig.map((item, i) => (
                 <motion.div
                   key={item.label}
                   initial={{ opacity: 0, x: -20 }}

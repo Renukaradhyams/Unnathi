@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Car, Cog, Zap, Target, CheckCircle, Plane, Stethoscope, Sprout } from "lucide-react";
 import Layout from "@/components/Layout";
+import { buildPageSeo } from "@/seo/pageSeo";
 import SectionHeading from "@/components/SectionHeading";
 import precisionParts from "@/assets/precision-parts-3d.jpg";
 import cncTurning from "@/assets/cnc-turning-3d.jpg";
@@ -65,10 +66,10 @@ const industries = [
 ];
 
 const Industries = () => (
-  <Layout>
+  <Layout seo={buildPageSeo("industries", [{ name: "Home", path: "/" }, { name: "Industries", path: "/industries" }])}>
     <section className="relative pt-36 pb-24 bg-gradient-dark overflow-hidden">
       <div className="absolute inset-0 opacity-15">
-        <img src={precisionParts} alt="" className="w-full h-full object-cover" />
+        <img src={precisionParts} alt="Precision machined components for industrial applications" title="Precision machined components for industrial applications" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
       </div>
       <div className="absolute inset-0 bg-charcoal/70" />
       <div className="container relative">

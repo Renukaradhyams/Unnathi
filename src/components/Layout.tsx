@@ -2,9 +2,16 @@ import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
+import Seo, { type SeoProps } from "@/seo/Seo";
 
-const Layout = ({ children }: { children: ReactNode }) => (
+type LayoutProps = {
+  children: ReactNode;
+  seo?: SeoProps;
+};
+
+const Layout = ({ children, seo }: LayoutProps) => (
   <div className="min-h-screen flex flex-col">
+    {seo && <Seo {...seo} />}
     <Header />
     <main className="flex-1">{children}</main>
     <Footer />

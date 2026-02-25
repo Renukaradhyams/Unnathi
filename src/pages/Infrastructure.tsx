@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { Factory, Cog, Wrench, Microscope, CheckCircle, Settings } from "lucide-react";
 import Layout from "@/components/Layout";
+import { buildPageSeo } from "@/seo/pageSeo";
 import SectionHeading from "@/components/SectionHeading";
 import facilityImg from "@/assets/facility-3d.jpg";
 import cncTurning from "@/assets/cnc-turning-3d.jpg";
 import cncMilling from "@/assets/cnc-milling-3d.jpg";
 import qualityLab from "@/assets/quality-lab-3d.jpg";
+import { seoImages } from "@config/images.config";
 import heroCnc from "@/assets/hero-cnc-3d.jpg";
 
 const fadeUp = {
@@ -50,10 +52,10 @@ const facilityFeatures = [
 ];
 
 const Infrastructure = () => (
-  <Layout>
+  <Layout seo={buildPageSeo("infrastructure", [{ name: "Home", path: "/" }, { name: "Infrastructure", path: "/infrastructure" }], undefined, seoImages.filter((image) => image.path === "/infrastructure").map((image) => ({ name: image.title, imageUrl: image.image, caption: image.caption, pagePath: image.path, width: image.width, height: image.height, encodingFormat: image.mimeType })))}>
     <section className="relative pt-36 pb-24 bg-gradient-dark overflow-hidden">
       <div className="absolute inset-0 opacity-15">
-        <img src={facilityImg} alt="" className="w-full h-full object-cover" />
+        <img src={facilityImg} alt="Manufacturing infrastructure at Unnathi CNC Bangalore" title="Manufacturing infrastructure at Unnathi CNC Bangalore" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
       </div>
       <div className="absolute inset-0 bg-charcoal/70" />
       <div className="container relative">
@@ -82,7 +84,7 @@ const Infrastructure = () => (
           </ul>
         </motion.div>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideRight} className="relative">
-          <img src={facilityImg} alt="Manufacturing Facility" className="rounded-2xl shadow-elevated w-full" />
+          <img src={facilityImg} alt="Manufacturing Facility" title="Manufacturing Facility" className="rounded-2xl shadow-elevated w-full"  loading="lazy" decoding="async" />
           <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-gradient-industrial rounded-2xl opacity-20 -z-10" />
         </motion.div>
       </div>
@@ -97,7 +99,7 @@ const Infrastructure = () => (
             <motion.div key={cat.category} variants={scaleUp}
               className="bg-background rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 group hover:-translate-y-1 border border-transparent hover:border-primary/10">
               <div className="h-40 overflow-hidden">
-                <img src={cat.img} alt={cat.category} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img src={cat.img} alt={cat.category} title={cat.category} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"  loading="lazy" decoding="async" />
               </div>
               <div className="p-6">
                 <div className="w-12 h-12 rounded-xl bg-gradient-industrial flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-industrial -mt-10 relative">
@@ -126,7 +128,7 @@ const Infrastructure = () => (
           {[facilityImg, heroCnc, cncTurning, cncMilling, qualityLab, facilityImg].map((img, i) => (
             <motion.div key={i} variants={scaleUp} whileHover={{ scale: 1.03 }}
               className="relative overflow-hidden rounded-2xl group cursor-pointer shadow-card hover:shadow-elevated transition-all">
-              <img src={img} alt={`Facility ${i + 1}`} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700" />
+              <img src={img} alt={`Facility ${i + 1}`} title={`Facility ${i + 1}`} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"  loading="lazy" decoding="async" />
               <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/30 transition-colors duration-300" />
             </motion.div>
           ))}

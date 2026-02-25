@@ -4,45 +4,17 @@ import { MapPin, ArrowRight, Factory, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
+import { unitsConfig } from "@config/units.config";
+import { buildPageSeo } from "@/seo/pageSeo";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
 };
 
-const units = [
-  {
-    id: "bangalore-1",
-    name: "Unit 1 — Bangalore",
-    location: "Peenya Industrial Area, Bangalore",
-    specialisation: "Precision CNC Turning Operations",
-    capabilities: ["Multi-Axis CNC Turning", "Swiss-Type Lathes", "Precision Grinding"],
-  },
-  {
-    id: "bangalore-2",
-    name: "Unit 2 — Bangalore",
-    location: "Rajajinagar Industrial Estate, Bangalore",
-    specialisation: "Advanced Milling & Multi-Axis Machining",
-    capabilities: ["5-Axis VMC", "4-Axis HMC", "High-Speed Machining"],
-  },
-  {
-    id: "bangalore-3",
-    name: "Unit 3 — Bangalore",
-    location: "Bommasandra Industrial Area, Bangalore",
-    specialisation: "Batch Production & Quality Inspection",
-    capabilities: ["Batch Production", "CMM Inspection", "Surface Treatment"],
-  },
-  {
-    id: "tumakuru",
-    name: "Unit 4 — Tumakuru",
-    location: "Tumakuru Industrial Area, Tumakuru",
-    specialisation: "High-Volume Manufacturing & Expansion",
-    capabilities: ["High-Volume Production", "Bar-Fed Turning", "Automated Manufacturing"],
-  },
-];
 
 const OurUnits = () => (
-  <Layout>
+  <Layout seo={buildPageSeo("units", [{ name: "Home", path: "/" }, { name: "Our Units", path: "/units" }])}>
     <section className="relative pt-36 pb-24 bg-gradient-dark overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, hsl(0 0% 100% / 0.1) 1px, transparent 0)", backgroundSize: "40px 40px" }} />
@@ -60,7 +32,7 @@ const OurUnits = () => (
       <div className="container">
         <SectionHeading label="Facilities" title="4 Units. One Mission." description="Each unit includes advanced CNC machines, skilled manpower, and quality inspection systems." />
         <div className="grid md:grid-cols-2 gap-8">
-          {units.map((unit, i) => (
+          {unitsConfig.map((unit, i) => (
             <motion.div
               key={unit.id}
               initial="hidden"

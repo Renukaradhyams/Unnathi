@@ -1,6 +1,9 @@
 User-agent: Googlebot
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /
+
 User-agent: Bingbot
 Allow: /
 
@@ -12,3 +15,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://www.unnathicnc.com/sitemap.xml
+Sitemap: https://www.unnathicnc.com/image-sitemap.xml

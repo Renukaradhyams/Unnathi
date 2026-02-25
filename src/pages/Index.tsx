@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
+import { buildPageSeo } from "@/seo/pageSeo";
 import SectionHeading from "@/components/SectionHeading";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import heroCnc from "@/assets/hero-cnc-3d.jpg";
@@ -19,6 +20,7 @@ import precisionParts from "@/assets/precision-parts-3d.jpg";
 import cncTurning from "@/assets/cnc-turning-3d.jpg";
 import qualityLab from "@/assets/quality-lab-3d.jpg";
 import cncMilling from "@/assets/cnc-milling-3d.jpg";
+import { seoImages } from "@config/images.config";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -93,11 +95,11 @@ const Index = () => {
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   return (
-    <Layout>
+    <Layout seo={buildPageSeo("home", [{ name: "Home", path: "/" }], undefined, seoImages.filter((image) => image.path === "/").map((image) => ({ name: image.title, imageUrl: image.image, caption: image.caption, pagePath: image.path, width: image.width, height: image.height, encodingFormat: image.mimeType })))}>
       {/* Hero */}
       <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroY, scale: heroScale }}>
-          <img src={heroCnc} alt="CNC Machining Center" className="w-full h-full object-cover" />
+          <img src={heroCnc} alt="CNC Machining Center" title="CNC Machining Center" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
           <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 via-charcoal/80 to-charcoal/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-charcoal/20" />
         </motion.div>
@@ -184,7 +186,7 @@ const Index = () => {
               variants={slideRight}
               className="relative"
             >
-              <motion.img whileHover={{ scale: 1.02 }} transition={{ duration: 0.5 }} src={facilityImg} alt="Unnathi CNC Facility" className="rounded-2xl shadow-elevated w-full" />
+              <motion.img whileHover={{ scale: 1.02 }} transition={{ duration: 0.5 }} src={facilityImg} alt="Unnathi CNC Facility" title="Unnathi CNC Facility" className="rounded-2xl shadow-elevated w-full" />
               <div className="absolute -bottom-6 -left-6 w-28 h-28 bg-gradient-industrial rounded-2xl opacity-20 -z-10" />
               <div className="absolute -top-6 -right-6 w-36 h-36 bg-primary/10 rounded-full -z-10" />
               <motion.div
@@ -234,7 +236,7 @@ const Index = () => {
       {/* Stats Counters */}
       <section className="py-24 bg-gradient-dark relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <img src={cncMilling} alt="" className="w-full h-full object-cover" />
+          <img src={cncMilling} alt="CNC machining service showcase image" title="CNC machining service showcase image" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
         </div>
         <div className="absolute inset-0 bg-charcoal/70" />
         <div className="absolute inset-0 opacity-5">
@@ -333,7 +335,7 @@ const Index = () => {
                 className="group overflow-hidden rounded-2xl shadow-card hover:shadow-elevated transition-all duration-500"
               >
                 <div className="relative h-52 overflow-hidden">
-                  <img src={ind.img} alt={ind.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src={ind.img} alt={ind.title} title={ind.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"  loading="lazy" decoding="async" />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent" />
                   <div className="absolute bottom-4 left-4 flex items-center gap-2">
                     <div className="w-9 h-9 rounded-lg bg-primary/20 backdrop-blur-sm flex items-center justify-center border border-primary-foreground/10">
@@ -429,7 +431,7 @@ const Index = () => {
             ].map((cat) => (
               <motion.div key={cat.title} variants={scaleUp} whileHover={{ y: -6 }} className="bg-muted/50 rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 group border border-transparent hover:border-primary/10">
                 <div className="h-40 overflow-hidden">
-                  <img src={cat.img} alt={cat.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src={cat.img} alt={cat.title} title={cat.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"  loading="lazy" decoding="async" />
                 </div>
                 <div className="p-6">
                   <div className="w-12 h-12 rounded-xl bg-gradient-industrial flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-industrial -mt-10 relative">
@@ -493,7 +495,7 @@ const Index = () => {
       {/* CTA */}
       <section className="py-28 bg-gradient-dark relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <img src={precisionParts} alt="" className="w-full h-full object-cover" />
+          <img src={precisionParts} alt="Precision components manufactured in India" title="Precision components manufactured in India" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
         </div>
         <div className="absolute inset-0 bg-charcoal/60" />
         <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, hsl(0 0% 100% / 0.05) 1px, transparent 0)", backgroundSize: "32px 32px" }} />

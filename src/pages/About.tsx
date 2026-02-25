@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Award, Target, Eye, Users } from "lucide-react";
 import Layout from "@/components/Layout";
+import { buildPageSeo } from "@/seo/pageSeo";
 import SectionHeading from "@/components/SectionHeading";
 import facilityImg from "@/assets/facility-3d.jpg";
 import precisionParts from "@/assets/precision-parts-3d.jpg";
@@ -46,11 +47,11 @@ const missionPoints = [
 ];
 
 const About = () => (
-  <Layout>
+  <Layout seo={buildPageSeo("about", [{ name: "Home", path: "/" }, { name: "About", path: "/about" }])}>
     {/* Hero */}
     <section className="relative pt-36 pb-24 bg-gradient-dark overflow-hidden">
       <div className="absolute inset-0 opacity-15">
-        <img src={facilityImg} alt="" className="w-full h-full object-cover" />
+        <img src={facilityImg} alt="Unnathi CNC manufacturing facility in Bangalore" title="Unnathi CNC manufacturing facility in Bangalore" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
       </div>
       <div className="absolute inset-0 bg-charcoal/70" />
       <div className="container relative">
@@ -85,7 +86,7 @@ const About = () => (
           </div>
         </motion.div>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideRight} className="relative">
-          <img src={facilityImg} alt="Unnathi CNC Facility" className="rounded-2xl shadow-elevated" />
+          <img src={facilityImg} alt="Unnathi CNC Facility" title="Unnathi CNC Facility" className="rounded-2xl shadow-elevated"  loading="lazy" decoding="async" />
           <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-gradient-industrial rounded-2xl opacity-20 -z-10" />
         </motion.div>
       </div>
@@ -127,7 +128,7 @@ const About = () => (
     <section className="py-24 bg-background overflow-hidden">
       <div className="container grid md:grid-cols-2 gap-16 items-center">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideRight} className="md:order-2 relative">
-          <img src={precisionParts} alt="Precision Components" className="rounded-2xl shadow-elevated" />
+          <img src={precisionParts} alt="Precision Components" title="Precision Components" className="rounded-2xl shadow-elevated"  loading="lazy" decoding="async" />
           <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full -z-10" />
         </motion.div>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideLeft} className="md:order-1">
