@@ -99,7 +99,7 @@ const Index = () => {
       {/* Hero */}
       <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroY, scale: heroScale }}>
-          <img src={heroCnc} alt="CNC Machining Center" title="CNC Machining Center" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
+          <img src={heroCnc} alt="CNC Machining Center" title="CNC Machining Center" className="w-full h-full object-cover" loading="eager" fetchPriority="high" decoding="async" />
           <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 via-charcoal/80 to-charcoal/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-charcoal/20" />
         </motion.div>
