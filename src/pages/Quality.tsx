@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, CheckCircle, FileCheck, Microscope, ClipboardList } from "lucide-react";
 import Layout from "@/components/Layout";
+import { buildPageSeo } from "@/seo/pageSeo";
 import SectionHeading from "@/components/SectionHeading";
 
 const fadeUp = {
@@ -20,7 +21,7 @@ const inspectionEquipment = [
 ];
 
 const Quality = () => (
-  <Layout>
+  <Layout seo={buildPageSeo("quality", [{ name: "Home", path: "/" }, { name: "Quality", path: "/quality" }])}>
     <section className="relative pt-32 pb-20 bg-gradient-dark">
       <div className="container relative">
         <motion.div initial="hidden" animate="visible" variants={fadeUp}>
