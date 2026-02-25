@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
+import { buildPageSeo } from "@/seo/pageSeo";
 import SectionHeading from "@/components/SectionHeading";
 
 const fadeUp = {
@@ -18,7 +19,7 @@ const news = [
 ];
 
 const NewsEvents = () => (
-  <Layout>
+  <Layout seo={buildPageSeo("news", [{ name: "Home", path: "/" }, { name: "News & Events", path: "/news" }])}>
     <section className="relative pt-32 pb-20 bg-gradient-dark">
       <div className="container relative">
         <motion.div initial="hidden" animate="visible" variants={fadeUp}>

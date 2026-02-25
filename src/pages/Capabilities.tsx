@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Factory, Cog, Monitor, ArrowRight, CheckCircle, Wrench, Target, Layers } from "lucide-react";
 import Layout from "@/components/Layout";
+import { buildPageSeo } from "@/seo/pageSeo";
 import SectionHeading from "@/components/SectionHeading";
 import facilityImg from "@/assets/facility-3d.jpg";
 import cncTurning from "@/assets/cnc-turning-3d.jpg";
@@ -54,10 +55,10 @@ const technicalStrengths = [
 ];
 
 const Capabilities = () => (
-  <Layout>
+  <Layout seo={buildPageSeo("capabilities", [{ name: "Home", path: "/" }, { name: "Capabilities", path: "/capabilities" }])}>
     <section className="relative pt-36 pb-24 bg-gradient-dark overflow-hidden">
       <div className="absolute inset-0 opacity-15">
-        <img src={cncMilling} alt="" className="w-full h-full object-cover" />
+        <img src={cncMilling} alt="CNC milling machine in operation at Bangalore unit" title="CNC milling machine in operation at Bangalore unit" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
       </div>
       <div className="absolute inset-0 bg-charcoal/70" />
       <div className="container relative">

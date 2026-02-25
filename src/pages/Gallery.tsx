@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ZoomIn } from "lucide-react";
 import Layout from "@/components/Layout";
+import { buildPageSeo } from "@/seo/pageSeo";
 import SectionHeading from "@/components/SectionHeading";
 import facilityImg from "@/assets/facility-3d.jpg";
 import heroCnc from "@/assets/hero-cnc-3d.jpg";
@@ -13,6 +14,7 @@ import aeroImg from "@/assets/aerospace-parts.jpg";
 import medImg from "@/assets/medical-parts.jpg";
 import agriImg from "@/assets/agriculture-parts.jpg";
 import machineImg from "@/assets/machine-tools-parts.jpg";
+import { seoImages } from "@config/images.config";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -48,10 +50,10 @@ const Gallery = () => {
   const filtered = activeCategory === "All" ? galleryItems : galleryItems.filter((g) => g.category === activeCategory);
 
   return (
-    <Layout>
+    <Layout seo={buildPageSeo("gallery", [{ name: "Home", path: "/" }, { name: "Gallery", path: "/gallery" }], undefined, seoImages.filter((image) => image.path === "/gallery").map((image) => ({ name: image.title, imageUrl: image.image, caption: image.caption, pagePath: image.path, width: image.width, height: image.height, encodingFormat: image.mimeType })))}>
       <section className="relative pt-36 pb-24 bg-gradient-dark overflow-hidden">
         <div className="absolute inset-0 opacity-15">
-          <img src={facilityImg} alt="" className="w-full h-full object-cover" />
+          <img src={facilityImg} alt="Gallery cover showing Unnathi CNC production floor" title="Gallery cover showing Unnathi CNC production floor" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
         </div>
         <div className="absolute inset-0 bg-charcoal/70" />
         <div className="container relative">
@@ -99,7 +101,7 @@ const Gallery = () => {
                   className="relative overflow-hidden rounded-2xl group cursor-pointer aspect-square shadow-card hover:shadow-elevated transition-shadow"
                   onClick={() => setSelectedImage(item)}
                 >
-                  <img src={item.src} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src={item.src} alt={item.title} title={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"  loading="lazy" decoding="async" />
                   <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/50 transition-colors duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
                       <ZoomIn className="h-8 w-8 text-primary-foreground mx-auto mb-2" />
@@ -135,7 +137,7 @@ const Gallery = () => {
               <button onClick={() => setSelectedImage(null)} className="absolute -top-12 right-0 p-2 text-primary-foreground hover:text-primary transition-colors">
                 <X className="h-6 w-6" />
               </button>
-              <img src={selectedImage.src} alt={selectedImage.title} className="w-full rounded-2xl shadow-elevated" />
+              <img src={selectedImage.src} alt={selectedImage.title} title={selectedImage.title} className="w-full rounded-2xl shadow-elevated"  loading="lazy" decoding="async" />
               <div className="mt-4 text-center">
                 <p className="text-lg font-heading font-semibold text-primary-foreground">{selectedImage.title}</p>
                 <p className="text-sm text-steel">{selectedImage.category}</p>

@@ -3,6 +3,7 @@ import { Briefcase, MapPin, Clock, ArrowRight, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { buildPageSeo } from "@/seo/pageSeo";
 import SectionHeading from "@/components/SectionHeading";
 
 const fadeUp = {
@@ -18,7 +19,7 @@ const openings = [
 ];
 
 const Careers = () => (
-  <Layout>
+  <Layout seo={buildPageSeo("careers", [{ name: "Home", path: "/" }, { name: "Careers", path: "/careers" }])}>
     <section className="relative pt-32 pb-20 bg-gradient-dark">
       <div className="container relative">
         <motion.div initial="hidden" animate="visible" variants={fadeUp}>

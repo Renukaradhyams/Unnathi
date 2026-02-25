@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Layout from "@/components/Layout";
+import { buildPageSeo } from "@/seo/pageSeo";
 import { useToast } from "@/hooks/use-toast";
 import facilityImg from "@/assets/facility-3d.jpg";
 
@@ -39,10 +40,10 @@ const Contact = () => {
   };
 
   return (
-    <Layout>
+    <Layout seo={buildPageSeo("contact", [{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])}>
       <section className="relative pt-36 pb-24 bg-gradient-dark overflow-hidden">
         <div className="absolute inset-0 opacity-15">
-          <img src={facilityImg} alt="" className="w-full h-full object-cover" />
+          <img src={facilityImg} alt="Unnathi CNC Bangalore facility exterior" title="Unnathi CNC Bangalore facility exterior" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
         </div>
         <div className="absolute inset-0 bg-charcoal/70" />
         <div className="container relative">
